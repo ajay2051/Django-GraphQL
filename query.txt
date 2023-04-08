@@ -1,0 +1,71 @@
+query{
+users{
+edges{
+node{
+username
+email
+}
+}
+}
+}
+
+# For Registration
+mutation{
+register(
+email: "ajay@email.com",
+username: "ajay",
+password1: "1234",
+password2: "1234"
+){
+success,
+errors,
+token,
+refreshToken,
+}
+}
+
+# Verify Account
+mutation{
+verifyAccount(token: "eyencjahcqoqwejcohwubqdhweuixh")
+{
+success
+errors
+}
+}
+
+#Login
+mutation{
+tokenAuth(username: "admin", password:"admin"){
+success,
+errors,
+token,
+refreshToken,
+user{
+username
+}
+}
+}
+
+
+# Activate Email
+mutation{
+resendActivationEmail(email:"ajay@email.com")
+{
+errors
+}
+}
+
+# Send Reset Email
+mutation{
+sendPasswordResetEmail(email: "ajay@email.com"){
+success
+errors
+}
+}
+
+# Reset Password
+mutation{
+passwordReset(token: "eyebcahgfcyfgcysgh", newpassword1: "jdiuiqdjjklas", newpassword2: "jahduhuasnxmvnij"){
+	success
+}
+}
